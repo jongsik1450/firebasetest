@@ -16,7 +16,7 @@ public class Gaip extends AppCompatActivity {
     Button join_btn;
     Button exit_btn;
     private FirebaseFirestore db;
-    private EditText id, password, password_chk, email;
+    private EditText id, password, email;
 
     @SuppressLint("MissingInflatedId")
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,6 @@ public class Gaip extends AppCompatActivity {
 
         id = (EditText) findViewById(R.id.id);
         password = (EditText) findViewById(R.id.password);
-        password_chk = (EditText) findViewById(R.id.password_chk);
         email = (EditText) findViewById(R.id.email);
 
         // 가입하기 버튼
@@ -54,13 +53,12 @@ public class Gaip extends AppCompatActivity {
     private void saveUserData() {
         String userId = id.getText().toString();
         String userPassword = password.getText().toString();
-        String userPassword_chk = password_chk.getText().toString();
         String userEmail = email.getText().toString();
 
-        checkDuplicateData(userId, userPassword, userPassword_chk, userEmail);
+        checkDuplicateData(userId, userPassword, userEmail);
     }
 
-    private void checkDuplicateData(String userId, String userPassword, String userPassword_chk, String userEmail) {
+    private void checkDuplicateData(String userId, String userPassword, String userEmail) {
         // 중복 여부를 확인하기 위한 쿼리를 생성합니다.
         Query query = db.collection("GaipInfo")
                 .whereEqualTo("userId", userId)
@@ -75,7 +73,7 @@ public class Gaip extends AppCompatActivity {
                     Toast.makeText(this, "이미 존재하는 사용자 정보입니다.", Toast.LENGTH_SHORT).show();
                 } else {
                     // 중복된 값이 없으므로 팀 정보를 저장합니다.
-                    saveTeamData(userId, userPassword, userPassword_chk, userEmail);
+                    saveTeamData(userId, userPassword, userEmail);
                 }
             } else {
                 // 쿼리 실행 중 오류가 발생한 경우 처리합니다.
@@ -84,10 +82,10 @@ public class Gaip extends AppCompatActivity {
         });
     }
 
-    private void saveTeamData(String userId, String userPassword, String userPassword_chk, String userEmail) {
+    private void saveTeamData(String userId, String userPassword, String userEmail) {
         // TeamInsertData 객체 생성
         // 사용자 객체 생성
-        GaipUser gaipuser = new GaipUser(userId, userPassword, userPassword_chk, userEmail);
+        GaipUser gaipuser = new GaipUser(userId, userPassword, userEmail);
 
         // 팀 정보를 저장합니다.
         db.collection("GaipInfo")
@@ -107,7 +105,6 @@ public class Gaip extends AppCompatActivity {
     private void clearInputFields() {
         id.setText("");
         password.setText("");
-        password_chk.setText("");
         email.setText("");
     }
 }

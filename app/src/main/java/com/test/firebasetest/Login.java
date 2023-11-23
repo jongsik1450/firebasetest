@@ -1,5 +1,7 @@
 package com.test.firebasetest;
 // MainActivity.java
+import static java.lang.System.exit;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class Login extends AppCompatActivity {
 
     private EditText editTextUserId, editTextPassword;
-    private Button buttonSave;
+    private Button buttonSave, buttonExit;
 
     private FirebaseFirestore db;
 
@@ -29,13 +31,24 @@ public class Login extends AppCompatActivity {
         editTextUserId = findViewById(R.id.editTextUserId);
         editTextPassword = findViewById(R.id.editTextPassword);
         buttonSave = findViewById(R.id.buttonSave);
-
+        buttonExit = findViewById(R.id.buttonExit);
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 login();
             }
         });
+        buttonExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exit();
+            }
+        });
+    }
+
+    private void exit() {
+        Intent intent = new Intent(Login.this, MainActivity.class);
+        startActivity(intent);
     }
 
     private void login() {

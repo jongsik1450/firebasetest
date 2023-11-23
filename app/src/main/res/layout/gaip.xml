@@ -21,7 +21,7 @@
         android:text="회원가입"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/join_name"
+        app:layout_constraintBottom_toTopOf="@+id/id"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -38,34 +38,20 @@
         android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:ems="10"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:hint="PASSWORD"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/password_chk"
-        app:layout_constraintStart_toStartOf="@+id/email" />
-
-    <EditText
-        android:id="@+id/password_chk"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginBottom="267dp"
         android:ems="10"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
-        android:hint="비밀번호 확인"
+        android:hint="비밀번호"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/password" />
+        app:layout_constraintStart_toStartOf="@+id/email" />
 
     <EditText
         android:id="@+id/email"
@@ -80,7 +66,7 @@
         android:textColorHint="#FFFFFF"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/password"
-        app:layout_constraintStart_toStartOf="@+id/email" />
+        app:layout_constraintStart_toStartOf="@+id/id" />
 
 
     <android.widget.Button
@@ -102,6 +88,7 @@
         android:layout_marginTop="71dp"
         android:text="취소"
         app:layout_constraintStart_toEndOf="@+id/join_button"
-        app:layout_constraintTop_toBottomOf="@+id/password_chk" />
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -11,7 +11,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class InsertTeamInfo  extends AppCompatActivity {
+public class InsertTeamInfo extends AppCompatActivity {
     private FirebaseFirestore db;
     EditText name, area, intro;
     Button storeBtn;
